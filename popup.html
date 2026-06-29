@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tab Renamer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>Tab Renamer</h1>
+    <button id="btn-apply-now" title="Apply rules to current tab">Apply now</button>
+  </header>
+
+  <section id="current-tab">
+    <div id="current-tab-info">
+      <span id="current-hostname" class="badge"></span>
+      <span id="current-title" class="muted"></span>
+    </div>
+  </section>
+
+  <section id="rules-section">
+    <div class="section-header">
+      <span>Rules</span>
+      <button id="btn-add" class="btn-icon" title="Add rule">＋</button>
+    </div>
+
+    <ul id="rules-list"></ul>
+
+    <p id="empty-state" class="muted">No rules yet. Add one above.</p>
+  </section>
+
+  <!-- Add / Edit form (hidden by default) -->
+  <section id="rule-form" class="hidden">
+    <h2 id="form-title">Add rule</h2>
+
+    <label>Base URL
+      <input id="input-base-url" type="text" placeholder="e.g. https://github.com/org" autocomplete="off" spellcheck="false">
+      <span class="hint">Use a hostname like <code>github.com</code>, a wildcard like <code>*.github.com</code>, or a full base URL with a path.</span>
+    </label>
+
+    <label>Tab name
+      <input id="input-template" type="text" placeholder="e.g. GitHub · {title}" autocomplete="off" spellcheck="false">
+      <span class="hint">Use <code>{title}</code>, <code>{hostname}</code>, <code>{domain}</code>, <code>{path}</code></span>
+    </label>
+
+    <div id="form-preview" class="preview hidden"></div>
+
+    <div class="form-actions">
+      <button id="btn-cancel" class="btn-secondary">Cancel</button>
+      <button id="btn-save" class="btn-primary">Save</button>
+    </div>
+  </section>
+
+  <script src="popup.js"></script>
+</body>
+</html>
